@@ -1,0 +1,28 @@
+<div>
+    <form>
+        <div class="form-group">
+            <label for="username"><b>Github Events Performed by a User</b></label>
+            <input type="text" class="form-control" ng-model="username" placeholder="Enter Username"></input>
+        </div>
+    </form>
+
+    <table class="table table-bordered" ng-if="events">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Repo Name</th>
+                <th>Event Date</th>
+                <th>Event Type</th>
+             </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="event in events">
+                <td><img ng-src="{{event.actor.avatar_url}}" width="30">&nbsp; {{event.actor.login}}</td>
+                <td>{{event.repo.name}}</td>
+                <td>{{event.created_at | date:'medium'}}</td>
+                <td>{{event.type}}</td>
+              </tr>
+        </tbody>
+    </table>
+    <pre ng-if="message"> {{message|json}} </pre>
+</div>
